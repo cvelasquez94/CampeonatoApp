@@ -13,7 +13,7 @@ class Table extends Component {
         //console.log('CELDA', cellData, col)
         return (
             <View key={col.dataIndex} style={[styles.cell, style1]}>
-                <Text style={{color: 'white'}}>{cellData}</Text>
+                <Text style={{color: 'white', textAlign: 'left'}}>{cellData}</Text>
             </View>
         )
     }
@@ -58,6 +58,9 @@ class Table extends Component {
         }
         return (
             <View key={index} style={styles.row}>
+                <View key='positions' style={[styles.cell, {width: 40}]}>
+                    <Text style={{color: 'white'}}>{index + 1}</Text>
+                </View>
                 {
                     columns.map(col => renderCell(this.validateRow(col, rowData), col))
                 }
@@ -76,6 +79,9 @@ class Table extends Component {
             >
                 <View>
                     <View style={styles.header} >
+                        <View key='Number' style={[styles.headerItem,{width: 30}]}>
+                            <Text>Nº</Text>
+                        </View>
                         {this._renderHeader()}
                     </View>
                     <ScrollView
@@ -128,7 +134,7 @@ const styles = StyleSheet.create({
       //backgroundColor: '#022c43',
       alignItems: 'center',
       justifyContent: 'center',
-      opacity: 0.5
+      opacity: 0.5,
     }
   });
 
